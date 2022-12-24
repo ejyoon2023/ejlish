@@ -9,7 +9,8 @@ export default function answerForm(){
   const [question, setQuestion] = useState<string>("1+2?");
   const [answer, setAnswer] = useState<string>("");
   const [id, setId] = useState<number>(0);
-  const [correctAnswer, setCorrectAnswer] = useState<string>("1234");
+  const [correctAnswer, setCorrectAnswer] = useState<string>("");
+  const [AAnswer, setAAnswer] = useState<string>("");
 
   useEffect(() => {
     async function getQuestion() {
@@ -43,22 +44,9 @@ export default function answerForm(){
   }
 
   
-  const showAnswer = async () => {
-    const data = { index: id };
-    const res = await axios.post(
-      process.env.NEXT_PUBLIC_SERVER+'/answer',
-      data
-    );
-    console.log(res.data.data);
-    if (res.data.data === "ok") {
-        const res = await axios.get(
-          process.env.NEXT_PUBLIC_SERVER+'/question'
-        );
-        setQuestion(res.data.data.question);
-        setId(res.data.data.content_id);
-    } else {
-        alert("틀렸습니다! 다시 입력해주세요 🖍");
-    }
+  const showAnswer = async (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setAAnswer(correctAnswer);
   }
 
   return (
@@ -94,10 +82,10 @@ export default function answerForm(){
         <Button variant="primary" type="submit" onClick={() => submitAnswer(answer)}>
           Submit
         </Button>
-        <Button variant="primary" type="submit" onClick={() => showAnswer}>
+        <Button variant="primary" type="submit" onClick={showAnswer}>
           정답보기
         </Button>
-        {correctAnswer}
+        {AAnswer}
     </Form>
   </Question>
   );
