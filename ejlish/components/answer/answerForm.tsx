@@ -9,15 +9,16 @@ export default function answerForm(){
   const [question, setQuestion] = useState<string>("1+2?");
   const [answer, setAnswer] = useState<string>("");
   const [id, setId] = useState<number>(0);
-  const [correctAnswer, setCorrectAnswer] = useState<string>("");
+  const [correctAnswer, setCorrectAnswer] = useState<string>("1234");
 
   useEffect(() => {
     async function getQuestion() {
       console.log(process.env.NEXT_PUBLIC_SERVER, "HIHIHI")
       const response = await axios.get(process.env.NEXT_PUBLIC_SERVER+'/question');
-      console.log("res",response.data.data.question);
+      console.log("res",response.data.data);
       setQuestion(response.data.data.question);
-      setId(response.data.data.content_id)
+      setId(response.data.data.content_id);
+      setCorrectAnswer(response.data.data.answer);
     }
        getQuestion(); 
     },[]);
@@ -40,13 +41,24 @@ export default function answerForm(){
         alert("틀렸습니다! 다시 입력해주세요 🖍");
     }
   }
+
   
-  const showAnswer = async (id: number) => {
+  const showAnswer = async () => {
+    const data = { index: id };
     const res = await axios.post(
-      process.env.NEXT_PUBLIC_SERVER+'/getanswer',
-      id
+      process.env.NEXT_PUBLIC_SERVER+'/answer',
+      data
     );
-    console.log(res);
+    console.log(res.data.data);
+    if (res.data.data === "ok") {
+        const res = await axios.get(
+          process.env.NEXT_PUBLIC_SERVER+'/question'
+        );
+        setQuestion(res.data.data.question);
+        setId(res.data.data.content_id);
+    } else {
+        alert("틀렸습니다! 다시 입력해주세요 🖍");
+    }
   }
 
   return (
@@ -82,7 +94,7 @@ export default function answerForm(){
         <Button variant="primary" type="submit" onClick={() => submitAnswer(answer)}>
           Submit
         </Button>
-        <Button variant="primary" type="submit" onClick={() => showAnswer(id)}>
+        <Button variant="primary" type="submit" onClick={() => showAnswer}>
           정답보기
         </Button>
         {correctAnswer}

@@ -27,6 +27,7 @@ app.get("/question", async (req, res) => {
     data = {
         content_id: getRandomQuestion[0].content_id,
         question: getRandomQuestion[0].question,
+        answer: getRandomQuestion[0].answer
     };
 
     return res.status(200).send({
@@ -54,15 +55,18 @@ app.post("/answer", async (req, res) => {
 
 
 app.post("/getanswer", async (req, res) => {
-    console.log("hihi", req.body);
-    const getAnswer = await question.getQuestionByContentId(
-        req.body.index
-    );
-    let data = "";
-    return res.status(200).send({
-        data: getRandomQuestion[0].answer,
-        message: "HI!!",
-    });
+    console.log(req, res)
+    // const getRandomQuestion = await question.getQuestionByContentId(
+    //     req.body.index
+    // );
+    // data = {
+    //     answer: getRandomQuestion[0].answer,
+    // };
+
+    // return res.status(200).send({
+    //     data: data,
+    //     message: "Answer Found!",
+    // });
 });
 
 app.post("/addQuestion", async (req, res) => {
