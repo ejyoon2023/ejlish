@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "pm2 start npm --name \"ejlish\" -- start",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
