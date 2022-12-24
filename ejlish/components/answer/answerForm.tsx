@@ -38,6 +38,7 @@ export default function answerForm(){
           process.env.NEXT_PUBLIC_SERVER+'/question'
         );
         setQuestion(res.data.data.question);
+        setAnswer("")
         setId(res.data.data.content_id);
         setCorrectAnswer(res.data.data.answer);
     } else {
