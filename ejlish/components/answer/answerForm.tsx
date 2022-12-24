@@ -25,7 +25,8 @@ export default function answerForm(){
     },[]);
 
 
-  const submitAnswer = async (answer: string) => {
+  const submitAnswer = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     const data = { userAnswer: answer, index: id };
     const res = await axios.post(
       process.env.NEXT_PUBLIC_SERVER+'/answer',
@@ -81,7 +82,7 @@ export default function answerForm(){
           <Form.Label>정답</Form.Label>
           <Form.Control type="text" placeholder="정답을 입력하세요" onChange={(e)=>setAnswer(e.target.value)} />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={() => submitAnswer(answer)}>
+        <Button variant="primary" type="submit" onClick={submitAnswer}>
           Submit
         </Button>
         <Button variant="primary" type="submit" onClick={showAnswer}>
