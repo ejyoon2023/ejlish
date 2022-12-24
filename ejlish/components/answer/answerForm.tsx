@@ -38,6 +38,7 @@ export default function answerForm(){
         );
         setQuestion(res.data.data.question);
         setId(res.data.data.content_id);
+        setCorrectAnswer(res.data.data.answer);
     } else {
         alert("틀렸습니다! 다시 입력해주세요 🖍");
     }
