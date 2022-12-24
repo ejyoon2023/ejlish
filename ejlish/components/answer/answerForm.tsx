@@ -42,7 +42,11 @@ export default function answerForm(){
   }
   
   const showAnswer = async (id: number) => {
-
+    const res = await axios.post(
+      process.env.NEXT_PUBLIC_SERVER+'/getanswer',
+      id
+    );
+    console.log(res);
   }
 
   return (
