@@ -16,7 +16,7 @@ export default function questionForm() {
       if (AddAnswer.length !== 0 && AddQuestion.length !== 0) {
           const data = { question: AddQuestion, answer: AddAnswer };
           const res = await axios.post(
-              "http://localhost:5001/addQuestion",
+              process.env.NEXT_PUBLIC_SERVER+'/addQuestion',
               data
           );
           if (res.status === 200) alert("등록완료");
