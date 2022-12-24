@@ -78,7 +78,7 @@ export default function answerForm(){
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>정답</Form.Label>
-          <Form.Control type="email" placeholder="정답을 입력하세요" onChange={(e)=>setAnswer(e.target.value)} />
+          <Form.Control type="text" placeholder="정답을 입력하세요" onChange={(e)=>setAnswer(e.target.value)} />
         </Form.Group>
         <Button variant="primary" type="submit" onClick={() => submitAnswer(answer)}>
           Submit
