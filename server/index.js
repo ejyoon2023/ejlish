@@ -15,7 +15,7 @@ const mongoConnect = require("./models");
 mongoConnect();
 
 app.get("/", (req, res) => {
-    res.send("Hello! HI 2345");
+    res.send("Hello! HI 2");
 });
 
 app.get("/question", async (req, res) => {
@@ -48,6 +48,19 @@ app.post("/answer", async (req, res) => {
     }
     return res.status(200).send({
         data: data,
+        message: "HI!!",
+    });
+});
+
+
+app.post("/getanswer", async (req, res) => {
+    console.log("hihi", req.body);
+    const getAnswer = await question.getQuestionByContentId(
+        req.body.index
+    );
+    let data = "";
+    return res.status(200).send({
+        data: getRandomQuestion[0].answer,
         message: "HI!!",
     });
 });
