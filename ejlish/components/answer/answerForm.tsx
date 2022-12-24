@@ -82,7 +82,7 @@ export default function answerForm(){
         <Button variant="primary" type="submit" onClick={() => submitAnswer(answer)}>
           Submit
         </Button>
-        <Button variant="primary" type="submit" onClick={showAnswer}>
+        <Button variant="primary" type="submit" onClick={() => showAnswer}>
           정답보기
         </Button>
         {AAnswer}
