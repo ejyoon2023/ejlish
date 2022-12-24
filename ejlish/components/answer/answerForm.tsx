@@ -1,14 +1,41 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
 export default function answerForm(){
   const [question, setQuestion] = useState<string>("1+2?");
-  const [answer, setAnswer] = useState<string>("0");
+  const [answer, setAnswer] = useState<string>("");
+  const [id, setId] = useState<number>(0);
 
-  const submitAnswer = (answer: string) => {
-    if (answer === "3") alert("OKKK")
-    else alert("WRONNNGG")
+  useEffect(() => {
+    async function getQuestion() {
+      console.log(process.env.NEXT_PUBLIC_SERVER, "HIHIHI")
+      const response = await axios.get(process.env.NEXT_PUBLIC_SERVER+'/question');
+      console.log("res",response.data.data.question);
+      setQuestion(response.data.data.question);
+      setId(response.data.data.content_id)
+    }
+       getQuestion(); 
+    },[]);
+
+
+  const submitAnswer = async (answer: string) => {
+    const data = { userAnswer: answer, index: id };
+    const res = await axios.post(
+      process.env.NEXT_PUBLIC_SERVER+'/answer',
+      data
+    );
+    console.log(res.data.data);
+    if (res.data.data === "ok") {
+        const res = await axios.get(
+          process.env.NEXT_PUBLIC_SERVER+'/question'
+        );
+        setQuestion(res.data.data.question);
+        setId(res.data.data.content_id);
+    } else {
+        alert("틀렸습니다! 다시 입력해주세요 🖍");
+    }
   }
   return (
     <Form>
