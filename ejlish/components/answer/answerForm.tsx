@@ -2,11 +2,14 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import styled from 'styled-components';
+import { theme } from "../../styles/theme";
 
 export default function answerForm(){
   const [question, setQuestion] = useState<string>("1+2?");
   const [answer, setAnswer] = useState<string>("");
   const [id, setId] = useState<number>(0);
+  const [correctAnswer, setCorrectAnswer] = useState<string>("");
 
   useEffect(() => {
     async function getQuestion() {
@@ -37,22 +40,56 @@ export default function answerForm(){
         alert("틀렸습니다! 다시 입력해주세요 🖍");
     }
   }
-  return (
-    <Form>
-    <Form.Group className="mb-3" controlId="formBasicEmail">
-      <Form.Label>문제</Form.Label>
-      <Form.Text className="text-muted">
-        {question}
-      </Form.Text>
-    </Form.Group>
+  
+  const showAnswer = async (id: number) => {
 
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-      <Form.Label>정답</Form.Label>
-      <Form.Control type="email" placeholder="정답을 입력하세요" onChange={(e)=>setAnswer(e.target.value)} />
-    </Form.Group>
-    <Button variant="primary" type="submit" onClick={() => submitAnswer(answer)}>
-      Submit
-    </Button>
-  </Form>
+  }
+
+  return (
+    <Question>
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label
+                style={{
+                    marginBottom: `${theme.space_7}`,
+                    fontSize: `${theme.fs_10}`,
+                    fontWeight: `${theme.fw_500}`,
+                    color: `${theme.very_dark_blue_line}`,
+                }}
+            >
+                
+            </Form.Label>
+          <Form.Text 
+                style={{
+                    marginBottom: `${theme.space_7}`,
+                    fontSize: `${theme.fs_10}`,
+                    fontWeight: `${theme.fw_500}`,
+                    color: `${theme.very_dark_blue_line}`,
+                }}
+            >
+            {question}
+          </Form.Text>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>정답</Form.Label>
+          <Form.Control type="email" placeholder="정답을 입력하세요" onChange={(e)=>setAnswer(e.target.value)} />
+        </Form.Group>
+        <Button variant="primary" type="submit" onClick={() => submitAnswer(answer)}>
+          Submit
+        </Button>
+        <Button variant="primary" type="submit" onClick={() => showAnswer(id)}>
+          정답보기
+        </Button>
+        {correctAnswer}
+    </Form>
+  </Question>
   );
 };
+
+const Question = styled.section`
+    padding-top: 10%;
+    text-align: center;
+    padding-left: 25%;
+    padding-right: 25%;
+`;
