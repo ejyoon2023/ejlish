@@ -15,7 +15,7 @@ const mongoConnect = require("./models");
 mongoConnect();
 
 app.get("/", (req, res) => {
-    res.send("Hello! HI 2");
+    res.send("Hello! HI 2345");
 });
 
 app.get("/question", async (req, res) => {
