@@ -37,6 +37,7 @@ export default function answerForm(){
         const res = await axios.get(
           process.env.NEXT_PUBLIC_SERVER+'/question'
         );
+        setAnswer("")
         setQuestion(res.data.data.question);
         setId(res.data.data.content_id);
         setCorrectAnswer(res.data.data.answer);
@@ -80,15 +81,19 @@ export default function answerForm(){
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>정답</Form.Label>
-          <Form.Control type="text" placeholder="정답을 입력하세요" onChange={(e)=>setAnswer(e.target.value)} />
+          <Form.Control type="text" placeholder="정답을 입력하세요" onChange={(e)=>setAnswer(e.target.value)} value={answer} />
         </Form.Group>
         <Button variant="primary" type="submit" onClick={submitAnswer}>
           Submit
         </Button>
-        <Button variant="primary" type="submit" onClick={showAnswer}>
+        <Button variant="primary" type="submit" onClick={showAnswer}  style={{
+                    marginLeft: `${theme.space_2}`,
+                }}>
           정답보기
         </Button>
-        {AAnswer}
+        <Answer>
+            <Form.Label>{AAnswer}</Form.Label>
+        </Answer>
     </Form>
   </Question>
   );
@@ -99,4 +104,9 @@ const Question = styled.section`
     text-align: center;
     padding-left: 25%;
     padding-right: 25%;
+`;
+
+const Answer = styled.div`
+    padding-top: 5%;
+    width: 100%;
 `;
