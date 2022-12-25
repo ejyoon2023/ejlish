@@ -8,33 +8,24 @@ export default function Header() {
 
   return (
     <>
-    <div>EJLISH</div>
-    <nav>
-        <Link href={'/answer'}>
-                <a>Answer</a>
-        </Link>
-        <Link href={'/question'}>
-                <a>Question</a>
-        </Link>
-    </nav>
-    </>
-    // <Navbar bg="light" expand="lg">
-    //     <div> EJLISH</div>
-    //     <Navbar.Brand href="#home">EJLISH</Navbar.Brand>
-    //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    //     <Navbar.Collapse id="basic-navbar-nav">
-    //       <Nav className="me-aansweruto">
-    //         <Link href={'/answer'}>
-    //            <a>Answer</a>
-    //         </Link>
-    //         <p style={{width: `20px`}}></p>
-    //         <Link href={'/question'}>
-    //            <a>Question</a>
-    //         </Link>
-    //       </Nav>
-    //     </Navbar.Collapse>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#home" style={{paddingLeft: `100px`}}>EJLISH</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-aansweruto">
+            <Link href="/answer">
+               Answer
+            </Link>
+            <p style={{width: `20px`}}></p>
+            <Link href="/question">
+               Question
+            </Link>
+          </Nav>
+        </Navbar.Collapse>
 
-    // </Navbar>
+      </Navbar>
+    </>
+
   );
 }
 
