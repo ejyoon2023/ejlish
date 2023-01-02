@@ -46,4 +46,9 @@ question_list.methods.saveQuestion = async function () {
     return await this.save();
 };
 
+question_list.statics.updateCorrecQuestion = async function(content_id, correct_count){
+    return await this.findOneAndUpdate({content_id: content_id}, {correct_count: correct_count} );
+
+}
+
 module.exports = mongoose.model("question", question_list);
