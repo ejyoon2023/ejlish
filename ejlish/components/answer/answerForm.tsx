@@ -51,8 +51,10 @@ export default function answerForm(){
     event.preventDefault();
     console.log(correctAnswer);
     setAAnswer(correctAnswer);
+    const data = { index: id };
     const res = await axios.post(
-      process.env.NEXT_PUBLIC_SERVER+'/wrongCount'
+      process.env.NEXT_PUBLIC_SERVER+'/wrongCount',
+      data
     );
   }
 
