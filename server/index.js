@@ -79,9 +79,11 @@ app.post("/answer", async (req, res) => {
 });
 
 app.post("/wrongCount", async (req, res) => {
+    
     const getRandomQuestion = await question.getQuestionByContentId(
         req.body.index
     );
+    console.log("HIHIHIHII", getRandomQuestion[0].wrong_count)
     if (getRandomQuestion[0].wrong_count > 0) {
         const wronggg = await question.updateWrongQuestion(req.body.index, getRandomQuestion[0].wrong_count+1); 
     }
