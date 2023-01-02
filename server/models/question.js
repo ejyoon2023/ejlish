@@ -51,4 +51,9 @@ question_list.statics.updateCorrectQuestion = async function(content_id, correct
 
 }
 
+question_list.statics.updateWrongQuestion = async function(content_id, wrong_count){
+    return await this.findOneAndUpdate({content_id: content_id}, {wrong_count: wrong_count} );
+
+}
+
 module.exports = mongoose.model("question", question_list);

@@ -56,10 +56,10 @@ app.post("/answer", async (req, res) => {
         data = "no";
         console.log("test", req.body.index, getRandomQuestion[0].wrong_count);
         if (getRandomQuestion[0].wrong_count === undefined) {
-            const wronggg = await question.updateCorrectQuestion(req.body.index, 1);
+            const wronggg = await question.updateWrongQuestion(req.body.index, 1);
         }
         else {
-            const wronggg = await question.updateCorrectQuestion(req.body.index, getRandomQuestion[0].wrong_count++);
+            const wronggg = await question.updateWrongQuestion(req.body.index, getRandomQuestion[0].wrong_count++);
             
         }
     }
