@@ -15,15 +15,26 @@ const mongoConnect = require("./models");
 mongoConnect();
 
 app.get("/", (req, res) => {
-    res.send("Hello! HI 2345");
+    res.send("Hello! HI");
 });
 
 app.get("/question", async (req, res) => {
     const questionCount = await question.getAllQuestion();
     const random_index = Math.floor(Math.random() * questionCount.length) + 47;
-    const getRandomQuestion = await question.getQuestionByContentId(
+    let getRandomQuestion = await question.getQuestionByContentId(
         random_index
     );
+
+    while (getRandomQuestion[0].correct_count - getRandomQuestion[0].wrong_count < 50){
+        const random_index = Math.floor(Math.random() * questionCount.length) + 47;
+        getRandomQuestion = await question.getQuestionByContentId(
+            random_index
+        );
+
+    }
+    
+    
+
     data = {
         content_id: getRandomQuestion[0].content_id,
         question: getRandomQuestion[0].question,
