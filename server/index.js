@@ -78,6 +78,22 @@ app.post("/answer", async (req, res) => {
     });
 });
 
+app.post("/wrongCount", async (req, res) => {
+    const getRandomQuestion = await question.getQuestionByContentId(
+        req.body.index
+    );
+    if (getRandomQuestion[0].wrong_count > 0) {
+        const wronggg = await question.updateWrongQuestion(req.body.index, getRandomQuestion[0].wrong_count+1); 
+    }
+    else {
+        const wronggg = await question.updateWrongQuestion(req.body.index, 1);
+    }
+
+    return res.status(200).send({
+        message: "OK!!",
+    });
+})
+
 
 
 app.post("/addQuestion", async (req, res) => {

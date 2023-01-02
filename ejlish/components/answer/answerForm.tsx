@@ -47,10 +47,13 @@ export default function answerForm(){
   }
 
   
-  const showAnswer = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const showAnswer = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     console.log(correctAnswer);
     setAAnswer(correctAnswer);
+    const res = await axios.get(
+      process.env.NEXT_PUBLIC_SERVER+'/wrongCount'
+    );
   }
 
   return (
