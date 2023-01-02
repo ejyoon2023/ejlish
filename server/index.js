@@ -45,7 +45,7 @@ app.post("/answer", async (req, res) => {
     if (getRandomQuestion[0].answer === req.body.userAnswer) {
         console.log("test", req.body.index, getRandomQuestion[0].correct_count);
         if (getRandomQuestion[0].correct_count > 0) {
-            const correcttt = await question.updateCorrectQuestion(req.body.index, getRandomQuestion[0].correct_count++);
+            const correcttt = await question.updateCorrectQuestion(req.body.index, getRandomQuestion[0].correct_count+1);
         }
         else {
             const correcttt = await question.updateCorrectQuestion(req.body.index, 1);
@@ -55,8 +55,7 @@ app.post("/answer", async (req, res) => {
         data = "no";
         console.log("test", req.body.index, getRandomQuestion[0].wrong_count);
         if (getRandomQuestion[0].wrong_count > 0) {
-            const wronggg = await question.updateWrongQuestion(req.body.index, getRandomQuestion[0].wrong_count++);
-            
+            const wronggg = await question.updateWrongQuestion(req.body.index, getRandomQuestion[0].wrong_count+1); 
         }
         else {
             const wronggg = await question.updateWrongQuestion(req.body.index, 1);
