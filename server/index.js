@@ -103,7 +103,7 @@ app.post("/wrongCount", async (req, res) => {
 app.post("/addQuestion", async (req, res) => {
     console.log("hihi", req.body);
 
-    const data = { question: req.body.question, answer: req.body.answer, correct_count: 0, correct_count: 0 };
+    const data = { question: req.body.question, answer: req.body.answer, correct_count: 0, wrong_count: 0 };
 
     const addQuestion = await new question(data).saveQuestion();
     console.log(addQuestion);
