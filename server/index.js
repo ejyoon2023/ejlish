@@ -80,6 +80,8 @@ app.post("/answer", async (req, res) => {
 
 app.post("/wrongCount", async (req, res) => {
     
+    console.log(req.body, "REQ BODY")
+    
     const getRandomQuestion = await question.getQuestionByContentId(
         req.body.index
     );
