@@ -44,20 +44,23 @@ app.post("/answer", async (req, res) => {
     let data = "";
     if (getRandomQuestion[0].answer === req.body.userAnswer) {
         console.log("test", req.body.index, getRandomQuestion[0].correct_count);
-        if (getRandomQuestion[0].correct_count) {
-            const correcttt = await question.updateCorrectQuestion(req.body.index, getRandomQuestion[0].correct_count++);
+        if (getRandomQuestion[0].correct_count === undefined) {
+            const correcttt = await question.updateCorrectQuestion(req.body.index, 1);
         }
         else {
-            const correcttt = await question.updateCorrectQuestion(req.body.index, 1);
+            const correcttt = await question.updateCorrectQuestion(req.body.index, getRandomQuestion[0].correct_count++);
+            
         }
         data = "ok";
     } else {
         data = "no";
-        if (getRandomQuestion[0].wrong_count) {
-            const wronggg = await question.updateCorrectQuestion(req.body.index, getRandomQuestion[0].wrong_count++);
+        console.log("test", req.body.index, getRandomQuestion[0].wrong_count);
+        if (getRandomQuestion[0].wrong_count === undefined) {
+            const wronggg = await question.updateCorrectQuestion(req.body.index, 1);
         }
         else {
-            const wronggg = await question.updateCorrectQuestion(req.body.index, 1);
+            const wronggg = await question.updateCorrectQuestion(req.body.index, getRandomQuestion[0].wrong_count++);
+            
         }
     }
     return res.status(200).send({
