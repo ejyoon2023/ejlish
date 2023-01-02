@@ -44,7 +44,7 @@ app.post("/answer", async (req, res) => {
     let data = "";
     if (getRandomQuestion[0].answer === req.body.userAnswer) {
         console.log("test", req.body.index, getRandomQuestion[0].correct_count);
-        const correcttt = await question.updateCorrectQuestion(req.body.index, getRandomQuestion[0].correct_count);
+        const correcttt = await question.updateCorrectQuestion(req.body.index, 1);
         console.log(correcttt);
         data = "ok-yo";
     } else {
