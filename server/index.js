@@ -43,7 +43,8 @@ app.post("/answer", async (req, res) => {
     );
     let data = "";
     if (getRandomQuestion[0].answer === req.body.userAnswer) {
-        const correcttt = await new question.updateCorrectQuestion(req.body.index, getRandomQuestion[0].correct_count);
+        console.log("test", req.body.index, getRandomQuestion[0].correct_count);
+        const correcttt = await question.updateCorrectQuestion(req.body.index, getRandomQuestion[0].correct_count);
         console.log(correcttt);
         data = "ok-yo";
     } else {
@@ -61,7 +62,7 @@ app.post("/answer", async (req, res) => {
 app.post("/addQuestion", async (req, res) => {
     console.log("hihi", req.body);
 
-    const data = { question: req.body.question, answer: req.body.answer };
+    const data = { question: req.body.question, answer: req.body.answer, correct_count: 0, correct_count: 0 };
 
     const addQuestion = await new question(data).saveQuestion();
     console.log(addQuestion);
