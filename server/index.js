@@ -43,10 +43,12 @@ app.post("/answer", async (req, res) => {
     );
     let data = "";
     if (getRandomQuestion[0].answer === req.body.userAnswer) {
-        await new question({correct_count: getRandomQuestion[0].correct_count++ }).saveQuestion();
-        data = "ok";
+        const correcttt = await new question({correct_count: getRandomQuestion[0].correct_count++ }).saveQuestion();
+        console.log(correcttt);
+        data = "ok-yo";
     } else {
-        data = "no";
+        await new question({correct_count: getRandomQuestion[0].correct_count++ }).saveQuestion();
+        data = "no-yo";
     }
     return res.status(200).send({
         data: data,
