@@ -15,6 +15,14 @@ const question_list = new mongoose.Schema({
         type: String,
         required: true,
     },
+    correct_count: {
+        type: Number,
+        required: false,
+    },
+    wrong_count: {
+        type: Number,
+        required: false,
+    },
 });
 
 question_list.plugin(autoIncrement.plugin, {
