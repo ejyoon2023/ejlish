@@ -25,7 +25,7 @@ app.get("/question", async (req, res) => {
         random_index
     );
 
-    while (getRandomQuestion[0].correct_count - getRandomQuestion[0].wrong_count < 50){
+    while (getRandomQuestion[0].correct_count - getRandomQuestion[0].wrong_count < 30){
         const random_index = Math.floor(Math.random() * questionCount.length) + 47;
         getRandomQuestion = await question.getQuestionByContentId(
             random_index
