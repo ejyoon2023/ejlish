@@ -52,6 +52,7 @@ export default function answerForm(){
         setCorrectAnswer(res.data.data.answer);
         if (best < consAnswer){
           const data = { best_score: consAnswer };
+          console.log("BEST UPDATE", data);
           const res = await axios.post(
             process.env.NEXT_PUBLIC_SERVER+'/updatebestscore',
             data
