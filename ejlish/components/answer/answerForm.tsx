@@ -12,6 +12,7 @@ export default function answerForm(){
   const [correctAnswer, setCorrectAnswer] = useState<string>("");
   const [AAnswer, setAAnswer] = useState<string>("");
   const [consAnswer, setConsAnswr] = useState<number>(0);
+  const [best, setBest] = useState<number>(10);
 
   useEffect(() => {
     async function getQuestion() {
@@ -23,7 +24,12 @@ export default function answerForm(){
       setCorrectAnswer(response.data.data.answer);
     }
        getQuestion(); 
+       setBestscore();
     },[]);
+
+  const setBestscore = async () => {
+    setBest(12);
+  }
 
 
   const submitAnswer = async (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -66,6 +72,7 @@ export default function answerForm(){
     <Question>
       <Form>
       <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>최고 {best}</Form.Label>
           <Form.Label>연속 {consAnswer}</Form.Label>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
