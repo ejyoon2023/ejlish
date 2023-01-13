@@ -17,12 +17,12 @@ const user_list = new mongoose.Schema({
     },
 });
 
-question_list.plugin(autoIncrement.plugin, {
-    model: "question",
-    field: "content_id",
-    startAt: 1, //시작
-    increment: 1, // 증가
-});
+// question_list.plugin(autoIncrement.plugin, {
+//     model: "question",
+//     field: "content_id",
+//     startAt: 1, //시작
+//     increment: 1, // 증가
+// });
 
 // 문제 전체 조회
 
