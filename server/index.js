@@ -109,7 +109,7 @@ app.get("/bestscore", async (req, res) => {
     console.log("GETUSERINFO", getUserInfo)
 
     return res.status(200).send({
-        data: 12,
+        data: getUserInfo.best_score,
         message: "User selected!",
     });
 });
