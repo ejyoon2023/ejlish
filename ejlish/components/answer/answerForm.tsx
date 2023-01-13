@@ -75,6 +75,7 @@ export default function answerForm(){
       <Form>
       <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>최고 {best}</Form.Label>
+          <Answer></Answer>
           <Form.Label>연속 {consAnswer}</Form.Label>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
