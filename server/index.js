@@ -114,4 +114,13 @@ app.get("/bestscore", async (req, res) => {
     });
 });
 
+app.post("/updatebestscore", async (req, res) => {
+    let getUserInfo = await user.updaateBestScore(req.body.best_score);    
+
+
+    return res.status(200).send({
+        message: "scoreUpdate!",
+    });
+});
+
 app.listen(5001);

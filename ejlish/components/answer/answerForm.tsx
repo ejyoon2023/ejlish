@@ -50,6 +50,13 @@ export default function answerForm(){
         setQuestion(res.data.data.question);
         setId(res.data.data.content_id);
         setCorrectAnswer(res.data.data.answer);
+        if (best < consAnswer){
+          const data = { best_score: consAnswer };
+          const res = await axios.post(
+            process.env.NEXT_PUBLIC_SERVER+'/updatebestscore',
+            data
+          );
+        }
     } else {
         setConsAnswr(0);
         alert("틀렸습니다! 다시 입력해주세요 🖍");
