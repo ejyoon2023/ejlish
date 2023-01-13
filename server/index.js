@@ -115,6 +115,7 @@ app.get("/bestscore", async (req, res) => {
 });
 
 app.post("/updatebestscore", async (req, res) => {
+    console.log("req.body", req.body)
     let getUserInfo = await user.updaateBestScore(req.body.best_score);    
 
 

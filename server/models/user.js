@@ -38,10 +38,10 @@ user_list.statics.getBestScore = async function () {
 //     return await this.save();
 // };
 
-// question_list.statics.updateCorrectQuestion = async function(content_id, correct_count){
-//     return await this.findOneAndUpdate({content_id: content_id}, {correct_count: correct_count} );
+user_list.statics.updaateBestScore = async function(best_score){
+    return await this.findOneAndUpdate({user_id: "test"}, {best_score: best_score} );
 
-// }
+}
 
 // question_list.statics.updateWrongQuestion = async function(content_id, wrong_count){
 //     return await this.findOneAndUpdate({content_id: content_id}, {wrong_count: wrong_count} );
