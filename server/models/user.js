@@ -39,6 +39,7 @@ user_list.statics.getBestScore = async function () {
 // };
 
 user_list.statics.updaateBestScore = async function(best_score){
+    console.log("제대로 도착", best_score)
     return await this.findOneAndUpdate({user_id: "test"}, {best_score: best_score} );
 
 }
