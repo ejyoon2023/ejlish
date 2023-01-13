@@ -50,6 +50,7 @@ export default function answerForm(){
         setQuestion(res.data.data.question);
         setId(res.data.data.content_id);
         setCorrectAnswer(res.data.data.answer);
+        console.log("BEST CHECK", best, consAnswer)
         if (best < consAnswer){
           const data = { best_score: consAnswer };
           console.log("BEST UPDATE", data);
