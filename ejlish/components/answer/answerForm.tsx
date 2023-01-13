@@ -11,6 +11,7 @@ export default function answerForm(){
   const [id, setId] = useState<number>(0);
   const [correctAnswer, setCorrectAnswer] = useState<string>("");
   const [AAnswer, setAAnswer] = useState<string>("");
+  const [consAnswer, setConsAnswr] = useState<number>(0);
 
   useEffect(() => {
     async function getQuestion() {
@@ -34,6 +35,7 @@ export default function answerForm(){
     );
     console.log(res.data.data);
     if (res.data.data === "ok") {
+        setConsAnswr(consAnswer+1);
         const res = await axios.get(
           process.env.NEXT_PUBLIC_SERVER+'/question'
         );
@@ -42,6 +44,7 @@ export default function answerForm(){
         setId(res.data.data.content_id);
         setCorrectAnswer(res.data.data.answer);
     } else {
+        setConsAnswr(0);
         alert("틀렸습니다! 다시 입력해주세요 🖍");
     }
   }
@@ -61,6 +64,9 @@ export default function answerForm(){
   return (
     <Question>
       <Form>
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>연속 {consAnswer}</Form.Label>
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label
                 style={{
