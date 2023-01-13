@@ -51,6 +51,7 @@ export default function answerForm(){
 
   
   const showAnswer = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    setConsAnswr(0);
     event.preventDefault();
     console.log(correctAnswer);
     setAAnswer(correctAnswer);
