@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
 const question = require("./models/question");
-const user = reuire("./models/user")
+const user = require("./models/user")
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -106,6 +106,7 @@ app.post("/addQuestion", async (req, res) => {
 
 app.get("/bestscore", async (req, res) => {
     let getUserInfo = await user.getBestScore();    
+    console.log("GETUSERINFO", getUserInfo)
 
     return res.status(200).send({
         data: 12,
