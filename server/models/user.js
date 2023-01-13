@@ -48,4 +48,4 @@ user_list.statics.getBestScore = async function () {
 
 // }
 
-module.exports = mongoose.model("question", question_list);
+module.exports = mongoose.model("user", user_list);
