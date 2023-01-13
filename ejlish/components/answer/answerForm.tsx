@@ -29,7 +29,7 @@ export default function answerForm(){
 
   const setBestscore = async () => {
     const response = await axios.get(process.env.NEXT_PUBLIC_SERVER+'/bestscore');
-    console.log("resIIII",response.data);
+    console.log("resIIII",response.data.data.best_score);
     setBest(12);
   }
 
