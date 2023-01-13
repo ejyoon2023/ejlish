@@ -105,12 +105,10 @@ app.post("/addQuestion", async (req, res) => {
 });
 
 app.get("/bestscore", async (req, res) => {
-    let getUserInfo = await user.getBestScore(
-
-    );    
+    let getUserInfo = await user.getBestScore();    
 
     return res.status(200).send({
-        data: getUserInfo,
+        data: 12,
         message: "User selected!",
     });
 });
