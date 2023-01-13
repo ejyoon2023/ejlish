@@ -30,22 +30,22 @@ user_list.statics.getBestScore = async function () {
     return await this.find({user_id: "test"});
 };
 
-question_list.statics.getQuestionByContentId = async function (content_id) {
-    return await this.find({ content_id: content_id });
-};
+// question_list.statics.getQuestionByContentId = async function (content_id) {
+//     return await this.find({ content_id: content_id });
+// };
 
-question_list.methods.saveQuestion = async function () {
-    return await this.save();
-};
+// question_list.methods.saveQuestion = async function () {
+//     return await this.save();
+// };
 
-question_list.statics.updateCorrectQuestion = async function(content_id, correct_count){
-    return await this.findOneAndUpdate({content_id: content_id}, {correct_count: correct_count} );
+// question_list.statics.updateCorrectQuestion = async function(content_id, correct_count){
+//     return await this.findOneAndUpdate({content_id: content_id}, {correct_count: correct_count} );
 
-}
+// }
 
-question_list.statics.updateWrongQuestion = async function(content_id, wrong_count){
-    return await this.findOneAndUpdate({content_id: content_id}, {wrong_count: wrong_count} );
+// question_list.statics.updateWrongQuestion = async function(content_id, wrong_count){
+//     return await this.findOneAndUpdate({content_id: content_id}, {wrong_count: wrong_count} );
 
-}
+// }
 
 module.exports = mongoose.model("question", question_list);
