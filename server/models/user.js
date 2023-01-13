@@ -4,7 +4,7 @@ autoIncrement.initialize(mongoose.connection);
 
 const user_list = new mongoose.Schema({
     user_id: {
-        type: Number,
+        type: String,
         unique: true,
     },
     password: {
