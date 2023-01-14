@@ -60,6 +60,7 @@ export default function answerForm(){
             data
           );
         }
+        setAAnswer("")
     } else {
         setConsAnswr(0);
         alert("틀렸습니다! 다시 입력해주세요 🖍");
