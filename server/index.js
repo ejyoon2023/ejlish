@@ -29,7 +29,8 @@ app.get("/question", async (req, res) => {
     data = {
         content_id: getRandomQuestion[0].content_id,
         question: getRandomQuestion[0].question,
-        answer: getRandomQuestion[0].answer
+        answer: getRandomQuestion[0].answer,
+        questionCount: questionCount.length
     };
 
     return res.status(200).send({
