@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
 app.get("/question", async (req, res) => {
     const questionCount = await question.getAllQuestion();
-    const random_index = Math.floor(Math.random() * (questionCount.length - 119)) + 170;
+    const random_index = Math.floor(Math.random() * (questionCount.length - 119)) + 47;
     let getRandomQuestion = await question.getQuestionByContentId(
         random_index
     );    
